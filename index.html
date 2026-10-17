@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Little Surprise ✨</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+    :root {
+      --pink: #f8dce7;
+      --rose: #e98cae;
+      --deep: #7b3556;
+      --cream: #fffaf5;
+      --gold: #d6a85f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      padding: 24px;
+      color: var(--deep);
+      font-family: "DM Sans", sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, #fff8fb 0 8%, transparent 9%),
+        radial-gradient(circle at 85% 80%, #fff2f6 0 10%, transparent 11%),
+        linear-gradient(135deg, #fbe9ef, #fff6ec 55%, #f8e0e9);
+    }
+    .sparkle {
+      position: fixed;
+      color: #d99ab2;
+      opacity: .6;
+      animation: float 5s ease-in-out infinite;
+      pointer-events: none;
+      user-select: none;
+    }
+    .s1 { top: 9%; left: 9%; font-size: 28px; }
+    .s2 { top: 18%; right: 12%; font-size: 20px; animation-delay: 1s; }
+    .s3 { bottom: 13%; left: 14%; font-size: 24px; animation-delay: 2s; }
+    .s4 { bottom: 10%; right: 10%; font-size: 32px; animation-delay: .5s; }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-14px) rotate(12deg); } }
+
+    .card {
+      width: min(100%, 620px);
+      position: relative;
+      text-align: center;
+      padding: clamp(28px, 6vw, 58px) clamp(22px, 6vw, 58px);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 30px;
+      background: rgba(255, 250, 245, .82);
+      box-shadow: 0 24px 70px rgba(123, 53, 86, .13);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+    }
+    .tiny-label {
+      display: inline-block;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: #fff0f5;
+      color: #a45b7b;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 24px 0 12px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.25rem, 8vw, 4rem);
+      line-height: 1.08;
+      font-weight: 600;
+      color: #793957;
+    }
+    .intro {
+      max-width: 390px;
+      margin: 0 auto 28px;
+      color: #936a7c;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+    .gift {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #f6c8d9, #fbe8d5);
+      box-shadow: 0 12px 28px #d99ab244;
+      font-size: 52px;
+      transform: rotate(-5deg);
+      animation: bob 3s ease-in-out infinite;
+    }
+    @keyframes bob { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-7px) rotate(3deg); } }
+    button {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 15px 25px;
+      color: white;
+      font: 700 15px "DM Sans", sans-serif;
+      letter-spacing: .2px;
+      background: linear-gradient(135deg, #c95e89, #a94b78);
+      box-shadow: 0 10px 24px #b85a8240;
+      transition: transform .2s, box-shadow .2s;
+    }
+    button:hover { transform: translateY(-3px); box-shadow: 0 14px 28px #b85a8255; }
+    button:active { transform: scale(.98); }
+    button:focus-visible { outline: 3px solid #d6a85f; outline-offset: 4px; }
+    .hint { margin: 15px 0 0; color: #b28a9a; font-size: 12px; }
+
+    .surprise { display: none; animation: reveal .9s ease both; }
+    .surprise.show { display: block; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .heart { font-size: 44px; margin: 2px 0 10px; animation: heartbeat 1.4s ease-in-out infinite; }
+    @keyframes heartbeat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.12); } 30% { transform: scale(1); } 45% { transform: scale(1.08); } }
+    .surprise h2 {
+      margin: 0 0 16px;
+      font: 600 clamp(2rem, 7vw, 3.2rem)/1.13 "Playfair Display", Georgia, serif;
+      color: #793957;
+    }
+    .message { margin: 0 auto; max-width: 440px; line-height: 1.85; color: #855d70; font-size: 1rem; }
+    .names { margin-top: 22px; color: #b77b48; font: italic 1.1rem "Playfair Display", Georgia, serif; }
+    .divider { margin: 22px auto; width: 70px; height: 2px; background: linear-gradient(90deg, transparent, #d6a85f, transparent); }
+    .signature-label {
+      margin: 0;
+      color: #a77a8e;
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .family-signature {
+      margin: 7px 0 18px;
+      color: #793957;
+      font: 700 clamp(1.6rem, 6vw, 2.15rem) "Playfair Display", Georgia, serif;
+      text-shadow: 0 3px 18px #e98cae35;
+    }
+    .made-by-label { margin-top: 0; }
+    .signature {
+      margin: 7px 0 0;
+      color: #9e456e;
+      font: 700 clamp(1.35rem, 5vw, 1.8rem) "Playfair Display", Georgia, serif;
+      text-shadow: 0 2px 14px #e98cae33;
+    }
+    .signature span { color: #d47b9f; font-size: .9em; }
+    .small-note { color: #b28a9a; font-size: 12px; margin-top: 20px; }
+    .confetti {
+      position: fixed;
+      top: -20px;
+      width: 9px;
+      height: 13px;
+      border-radius: 3px;
+      pointer-events: none;
+      z-index: 10;
+      animation: fall linear forwards;
+    }
+    @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: .2; } }
+    .hidden { display: none !important; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <span class="sparkle s1">✦</span>
+  <span class="sparkle s2">♡</span>
+  <span class="sparkle s3">✧</span>
+  <span class="sparkle s4">♡</span>
+
+  <main class="card">
+    <section id="welcome">
+      <span class="tiny-label">A little something for you</span>
+      <div class="gift" aria-hidden="true">🎁</div>
+      <h1>Someone special<br />deserves a surprise…</h1>
+      <p class="intro">There’s a little happiness waiting behind this button. Ready to open your surprise?</p>
+      <button id="openBtn" type="button">Open Your Surprise ✨</button>
+      <p class="hint">Psst… tap to reveal your little moment of joy</p>
+    </section>
+
+    <section id="surprise" class="surprise" aria-live="polite">
+      <div class="heart" aria-hidden="true">💗</div>
+      <span class="tiny-label">A day worth celebrating</span>
+      <h2>Happy Wedding<br />Anniversary!</h2>
+      <div class="divider"></div>
+      <p class="message">
+        Aap dono ki zindagi ka yeh khoobsurat safar hamesha mohabbat, khushiyon,
+        hansi aur sukoon se bhara rahe. Aap dono ka saath hamesha yunhi bana rahe,
+        aur har naya din aapke liye aur bhi khoobsurat yaadein aur muskurane ki
+        wajah le kar aaye. Allah aap dono ki jodi hamesha salamat rakhe aur aapki
+        mohabbat ko har guzarte din ke saath aur gehra kare. 💐❤️
+      </p>
+      <p class="names">Dher saari mohabbat aur duaaon ke saath ♡</p>
+      <div class="divider"></div>
+      <p class="signature-label">With love and warm wishes from</p>
+      <p class="family-signature">The Rizwan Family</p>
+      <p class="signature-label made-by-label">A little surprise made with love by</p>
+      <p class="signature">M. Affan Ali <span aria-hidden="true">♡</span></p>
+      <p class="small-note">May your love story keep getting more beautiful with every chapter.</p>
+      <button id="againBtn" type="button" class="hidden">Celebrate Again 🎉</button>
+    </section>
+  </main>
+
+  <script>
+    const openBtn = document.getElementById("openBtn");
+    const againBtn = document.getElementById("againBtn");
+    const welcome = document.getElementById("welcome");
+    const surprise = document.getElementById("surprise");
+
+    function makeConfetti() {
+      const colors = ["#e98cae", "#d6a85f", "#f4c6d7", "#c7a6d8", "#f5d9a6", "#ffffff"];
+      for (let i = 0; i < 85; i++) {
+        const piece = document.createElement("span");
+        piece.className = "confetti";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDuration = (2.5 + Math.random() * 3) + "s";
+        piece.style.animationDelay = (Math.random() * .7) + "s";
+        piece.style.width = (6 + Math.random() * 6) + "px";
+        piece.style.height = (8 + Math.random() * 8) + "px";
+        document.body.appendChild(piece);
+        piece.addEventListener("animationend", () => piece.remove());
+      }
+    }
+
+    openBtn.addEventListener("click", () => {
+      welcome.classList.add("hidden");
+      surprise.classList.add("show");
+      againBtn.classList.remove("hidden");
+      makeConfetti();
+    });
+
+    againBtn.addEventListener("click", makeConfetti);
+  </script>
+</body>
+</html>
